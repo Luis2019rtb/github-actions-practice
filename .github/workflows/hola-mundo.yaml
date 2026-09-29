@@ -1,0 +1,13 @@
+name: Hello workflow
+on: [push]
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello-world-step-1
+        run: echo "hello world super dupper"
+      - name: Public ip
+        id: ip
+        uses: haythem/public-ip@v1.3
+      - name: hello-ip
+        run: echo "Super dupper hello world practice ${{steps.ip.outputs.ipv4}}!"
