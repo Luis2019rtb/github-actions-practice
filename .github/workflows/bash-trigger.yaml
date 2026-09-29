@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: checking out sources
         uses: actions/checkout@v6
-      - name: locate on directory
-        run: cd bash
+
       - name: running bash
+        working-directory: ./bash
         run: bash ./hello-world.sh
