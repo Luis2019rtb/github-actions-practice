@@ -1,0 +1,10 @@
+name: Pull request implementation
+on:
+  pull_request:
+    types: [opened, labeled]
+jobs:
+  pull_request_review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step after pull request trigger
+        run: echo "Reviewing"
