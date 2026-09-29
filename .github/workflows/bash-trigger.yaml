@@ -1,0 +1,14 @@
+name: bash workflow controller
+on:
+  push:
+    branches:
+      - "main"
+      - "bash/release/**"
+jobs:
+  bash-controller-executor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking out sources
+        uses: actions/checkout@v6
+      - name: running bash
+        run: sh ./bash/hello-world.sh
