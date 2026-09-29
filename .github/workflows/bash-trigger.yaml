@@ -11,4 +11,4 @@ jobs:
       - name: checking out sources
         uses: actions/checkout@v6
       - name: running bash
-        run: sh ./bash/hello-world.sh
+        run: ./bash/hello-world.sh
