@@ -13,5 +13,7 @@ jobs:
           java-version: 25
       - name: Setup gradle
         uses: gradle/actions/setup-gradle@v6
+      - name: locate on directory
+        run: cd java
       - name: Build with gradle
-        run: ./java/gradlew build run
+        run: ./gradlew build run
