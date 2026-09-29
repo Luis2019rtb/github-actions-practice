@@ -1,0 +1,8 @@
+name: Github Env variables
+on: [push]
+jobs:
+  env-variables-show:
+    runs-on: ubuntu-latest
+    steps:
+      - name: showing env github variables
+        run: echo $GITHUB_ENV
