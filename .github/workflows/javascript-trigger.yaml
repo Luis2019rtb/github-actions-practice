@@ -1,0 +1,23 @@
+name: javascript running CI/CD
+on:
+  push:
+    branches:
+      - "main"
+      - "js-run-**"
+jobs:
+  javascript-run:
+    name: javascript runner
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: checking out sources
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # Specify your preferred Node version (e.g., 18, 20, 22)
+          cache: "npm"
+
+      - name: running javascript
+        working-directory: ./javascript
+        run: node index.js
