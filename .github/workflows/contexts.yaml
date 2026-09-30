@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checking main
         run: |
-          echo "Desplegando en $GITHUB_REF"
+          echo "Desplegando en $GITHUB_REF on repository ${{ github.repository }}"
   prod-check:
     name: Context practice variables
     runs-on: ubuntu-slim
@@ -41,3 +41,8 @@ jobs:
           CONTEXT_RUNNER: ${{ toJSON(runner) }}
         run: |
           echo "Github runner $CONTEXT_RUNNER"
+
+      - env:
+          CONTEXT_SECRETS: ${{ toJSON(secrets) }}
+        run: |
+          echo "Github secrets $CONTEXT_SECRETS"
