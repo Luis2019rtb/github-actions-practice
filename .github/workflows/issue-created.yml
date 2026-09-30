@@ -10,4 +10,4 @@ jobs:
       - name: new issue creation
         run: echo New issue on $ISSUE_NUMBER
         env:
-          ISSUE_NUMBER: $[{ github.event.issue.number }]
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
