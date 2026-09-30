@@ -1,0 +1,11 @@
+name: Github comment request on pr
+on:
+  pull_request_review:
+    types: [edited, dismissed]
+jobs:
+  approved:
+    if: github.event.review.state == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      - name: approving mr process
+        run: echo "MR approved"
