@@ -1,0 +1,64 @@
+name: Triggers practice file for several events and Triggers
+run-name: Learning Triggers
+on:
+  push:
+    branches:
+      - "triggers-*"
+  pull_request:
+    types: [opened]
+    paths:
+      - "**.py"
+  issues:
+    types: [opened, labeled]
+  workflow_dispatch:
+    inputs:
+      favorite_programming_language:
+        description: "Favorite language"
+        default: javascript
+        required: false
+        type: choice
+        options:
+          - python
+          - javascript
+          - java
+      name:
+        description: "Your name"
+        required: true
+        default: default-name
+        type: string
+  schedule:
+    - cron: "15 22 * * *"
+jobs:
+  manual-hello-world:
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checking out code
+        uses: actions/checkout@v6
+      - name: Setting up python
+        uses: actions/setup-python@v5
+      - name: Running python
+        working-directory: ./python
+        run: python greet.py
+      - name: Define a name
+        run: |
+          echo "Handling env variables from triggers and inputs: $USERNAME with favorite language $FAVORITE_PROGRAMMING_LANGUAGE"
+        env:
+          USERNAME: ${{ inputs.name }}
+          FAVORITE_PROGRAMMING_LANGUAGE: ${{ inputs.favorite_programming_language }}
+  hello-world:
+    if: ${{ github.event_name != 'workflow_dispatch' }}
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checking out code
+        uses: actions/checkout@v6
+      - name: Setting up python
+        uses: actions/setup-python@v5
+      - name: Running python
+        working-directory: ./python
+        run: python greet.py
+      - name: Define a name
+        run: |
+          echo "Handling env variables from triggers and inputs: $USERNAME with favorite language $FAVORITE_PROGRAMMING_LANGUAGE"
+        env:
+          USERNAME: ${{ inputs.name }}
+          FAVORITE_PROGRAMMING_LANGUAGE: ${{ inputs.favorite_programming_language }}
