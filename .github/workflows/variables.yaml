@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: Showing variables
         run: |
-          echo "$GREETING mr $USER_NAME on date: $DAY_OF_WEEK"
+          echo "$GREETING mr $USER_NAME on date: $DAY_OF_WEEK using secret $LOCAL_SECRET"
         env:
-          $USER_NAME: ${{ github.repository_owner}}
+          USER_NAME: ${{ github.repository_owner}}
+          LOCAL_SECRET: ${{ secrets.SUPER_SECRET }}
