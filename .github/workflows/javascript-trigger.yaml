@@ -7,7 +7,7 @@ on:
 jobs:
   javascript-run:
     name: javascript runner
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     steps:
       - name: checking out sources
         uses: actions/checkout@v6
