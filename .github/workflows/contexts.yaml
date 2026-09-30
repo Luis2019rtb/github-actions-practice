@@ -5,20 +5,31 @@ jobs:
   prod-check:
     name: Context practice variables
     runs-on: ubuntu-slim
-    env:
-      CONTEXT_GITHUB: ${{ toJSON(github) }}
-      CONTEXT_VARS: ${{ toJSON(vars) }}
-      CONTEXT_JOB: ${{ toJSON(job) }}
     steps:
       - run: |
           echo "Github ref $GITHUB_REF"
-      - run: |
+
+      - env:
+          CONTEXT_GITHUB: ${{ toJSON(github) }}
+        run: |
           echo "Github json $CONTEXT_GITHUB"
-      - run: |
+
+      - env:
+          CONTEXT_VARS: ${{ toJSON(vars) }}
+        run: |
           echo "Github vars $CONTEXT_VARS"
-      - run: |
+
+      - env:
+          CONTEXT_JOB: ${{ toJSON(job) }}
+        run: |
           echo "Github job $CONTEXT_JOB"
+
       - env:
           CONTEXT_STEPS: ${{ toJSON(steps) }}
         run: |
           echo "Github steps $CONTEXT_STEPS"
+
+      - env:
+          CONTEXT_RUNNER: ${{ toJSON(runner) }}
+        run: |
+          echo "Github runner $CONTEXT_RUNNER"
