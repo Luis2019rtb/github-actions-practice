@@ -1,0 +1,14 @@
+name: Github comment request on pr
+on: issue_comment
+jobs:
+  # this job only runs on pr comments
+  pr_commented:
+    name: PR comment
+    if: $[{ github.event.issue.pull_request }]
+    runs-on: ubuntu-latest
+    steps:
+      - name: commenting pr
+        run: |
+          echo A comment on pr $NUMBER
+        env:
+          NUMBER: $[{ github.event.issue.number }]

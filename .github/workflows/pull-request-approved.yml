@@ -1,0 +1,10 @@
+name: Workflow for merge request approved
+on:
+  pull_request_review:
+    types: [submitted]
+jobs:
+  approved:
+    if: github.event.review.state == 'aproved'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "MR was approved"
