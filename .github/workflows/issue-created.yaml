@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: new issue creation
-        run: echo New issue on $ISSUE_NUMBER
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_ACTION: ${{ github.event.action }}
+        run: echo New issue $ISSUE_NUMBER action $ISSUE_ACTION
