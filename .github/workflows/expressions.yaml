@@ -20,6 +20,24 @@ jobs:
     steps:
       - name: Evaluating adult age
         run: echo "is an adult"
+
+  greet-regular-user:
+    if: ${{ !contains(inputs.name,"admin") }}
+    runs-on: ubuntu-slim
+    steps:
+      - name: Greeting users
+        env:
+          USERNAME: ${{ inputs.name }}
+        run: |
+          echo "Hello user $USERNAME"
+
+  greet-for-admin:
+    if: ${{ contains(inputs.name,"admin") }}
+    runs-on: ubuntu-slim
+    steps:
+      - name: Greeting admin
+        run: echo "hello admin"
+
   evalutate-teenage-age:
     if: ${{ inputs.age < 18 }}
     runs-on: ubuntu-slim
