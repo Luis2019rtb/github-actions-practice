@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-slim
     env:
       CONTEXT_GITHUB: ${{ toJSON(github) }}
-      CONTEXT_ENV: ${{ toJSON(env) }}
       CONTEXT_VARS: ${{ toJSON(vars) }}
       CONTEXT_JOB: ${{ toJSON(job) }}
     steps:
@@ -15,8 +14,6 @@ jobs:
           echo "Github ref $GITHUB_REF"
       - run: |
           echo "Github json $CONTEXT_GITHUB"
-      - run: |
-          echo "Github env $CONTEXT_ENV"
       - run: |
           echo "Github vars $CONTEXT_VARS"
       - run: |
