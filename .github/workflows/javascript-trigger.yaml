@@ -16,8 +16,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20" # Specify your preferred Node version (e.g., 18, 20, 22)
-          cache: "npm"
-
+          package-manager-cache: false
       - name: running javascript
         working-directory: ./javascript
         run: node index.js
