@@ -1,0 +1,13 @@
+name: On issue created event trigger
+on:
+  issues:
+    types: [opened, edited, closed]
+jobs:
+  issue_report:
+    name: on issue creation
+    runs-on: ubuntu-latest
+    steps:
+      - name: new issue creation
+        run: echo New issue on $ISSUE_NUMBER
+        env:
+          ISSUE_NUMBER: $[{ github.event.issue.number }]
