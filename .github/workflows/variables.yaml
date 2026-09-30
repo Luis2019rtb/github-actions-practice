@@ -1,0 +1,19 @@
+name: Practicing variables
+run-name: Practicing variables on github runs-name
+on:
+  push:
+    branches: [main]
+env:
+  DAY_OF_WEEK: monday
+jobs:
+  check-variables:
+    name: checking variables
+    runs-on: ubuntu-slim
+    env:
+      GREETING: Greetings
+    steps:
+      - name: Showing variables
+        run: |
+          echo "$GREETING mr $USER_NAME on date: $DAY_OF_WEEK"
+        env:
+          $USER_NAME: ${{ github.repository_owner}}
