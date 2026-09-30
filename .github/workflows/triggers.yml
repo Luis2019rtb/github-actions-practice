@@ -10,6 +10,7 @@ on:
       - "**.py"
   issues:
     types: [opened, labeled]
+
   workflow_dispatch:
     inputs:
       favorite_programming_language:
@@ -39,6 +40,9 @@ jobs:
       - name: Running python
         working-directory: ./python
         run: python greet.py
+        env:
+          USERNAME: ${{ inputs.name }}
+          FAVORITE_PROGRAMMING_LANGUAGE: ${{ inputs.favorite_programming_language }}
       - name: Define a name
         run: |
           echo "Handling env variables from triggers and inputs: $USERNAME with favorite language $FAVORITE_PROGRAMMING_LANGUAGE"
@@ -56,6 +60,9 @@ jobs:
       - name: Running python
         working-directory: ./python
         run: python greet.py
+        env:
+          USERNAME: ${{ inputs.name }}
+          FAVORITE_PROGRAMMING_LANGUAGE: ${{ inputs.favorite_programming_language }}
       - name: Define a name
         run: |
           echo "Handling env variables from triggers and inputs: $USERNAME with favorite language $FAVORITE_PROGRAMMING_LANGUAGE"

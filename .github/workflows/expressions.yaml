@@ -1,0 +1,28 @@
+name: Expression test
+run-name: Expression evaluation workflow
+on:
+  workflow_dispatch:
+    inputs:
+      age:
+        description: age
+        required: true
+        default: 18
+        type: integer
+      name:
+        description: name
+        default: default-name
+        required: true
+        type: string
+jobs:
+  evaluate-adult-age:
+    if: ${{ inputs.age > 18 }}
+    runs-on: ubuntu-slim
+    steps:
+      - name: Evaluating adult age
+        run: echo "is an adult"
+  evalutate-teenage-age:
+    if: ${{ inputs.age > 18 }}
+    runs-on: ubuntu-slim
+    steps:
+      - name: Evaluating teenage age
+        run: echo "is an teenager"
