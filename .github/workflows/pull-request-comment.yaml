@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: commenting pr
-        run: echo "MR approved"
+        run: echo "MR commented"
