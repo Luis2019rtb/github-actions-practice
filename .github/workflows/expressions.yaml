@@ -22,7 +22,7 @@ jobs:
         run: echo "is an adult"
 
   greet-regular-user:
-    if: ${{ !contains(inputs.name,"admin") }}
+    if: ${{ !contains(inputs.name,'admin') }}
     runs-on: ubuntu-slim
     steps:
       - name: Greeting users
@@ -32,7 +32,7 @@ jobs:
           echo "Hello user $USERNAME"
 
   greet-for-admin:
-    if: ${{ contains(inputs.name,"admin") }}
+    if: ${{ contains(inputs.name,'admin') }}
     runs-on: ubuntu-slim
     steps:
       - name: Greeting admin
