@@ -1,0 +1,27 @@
+name: Context practice
+run-name: Practice context on pipeline
+on: [push]
+jobs:
+  prod-check:
+    name: Context practice variables
+    runs-on: ubuntu-slim
+    env:
+      CONTEXT_GITHUB: ${{ toJSON(github) }}
+      CONTEXT_ENV: ${{ toJSON(env) }}
+      CONTEXT_VARS: ${{ toJSON(vars) }}
+      CONTEXT_JOB: ${{ toJSON(job) }}
+    steps:
+      - run: |
+          echo "Github ref $GITHUB_REF"
+      - run: |
+          echo "Github json $CONTEXT_GITHUB"
+      - run: |
+          echo "Github env $CONTEXT_ENV"
+      - run: |
+          echo "Github vars $CONTEXT_VARS"
+      - run: |
+          echo "Github job $CONTEXT_JOB"
+      - env:
+          CONTEXT_STEPS: ${{ toJSON(steps) }}
+        run: |
+          echo "Github steps $CONTEXT_STEPS"
