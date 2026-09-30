@@ -2,6 +2,14 @@ name: Context practice
 run-name: Practice context on pipeline
 on: [push]
 jobs:
+  check-main:
+    if: ${{ contains(github.ref,'refs/head/main') }}
+    name: check main
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checking main
+        run: |
+          echo "Desplegando en $GITHUB_REF"
   prod-check:
     name: Context practice variables
     runs-on: ubuntu-slim
