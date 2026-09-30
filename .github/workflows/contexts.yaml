@@ -3,7 +3,7 @@ run-name: Practice context on pipeline
 on: [push]
 jobs:
   check-main:
-    if: ${{ contains(github.ref,'refs/head/main') }}
+    if: ${{ contains(github.ref,'refs/heads/main') }}
     name: check main
     runs-on: ubuntu-slim
     steps:
