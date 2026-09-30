@@ -4,8 +4,7 @@ on:
     types: [edited, dismissed]
 jobs:
   approved:
-    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
-      - name: approving mr process
+      - name: commenting pr
         run: echo "MR approved"
