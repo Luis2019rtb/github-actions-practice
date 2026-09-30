@@ -50,7 +50,7 @@ jobs:
           USERNAME: ${{ inputs.name }}
           FAVORITE_PROGRAMMING_LANGUAGE: ${{ inputs.favorite_programming_language }}
   hello-world:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.event_name != 'workflow_dispatch' }}
     runs-on: ubuntu-slim
     steps:
       - name: Checking out code
