@@ -15,13 +15,13 @@ on:
         type: string
 jobs:
   evaluate-adult-age:
-    if: ${{ inputs.age > 18 }}
+    if: ${{ inputs.age >= 18 }}
     runs-on: ubuntu-slim
     steps:
       - name: Evaluating adult age
         run: echo "is an adult"
   evalutate-teenage-age:
-    if: ${{ inputs.age > 18 }}
+    if: ${{ inputs.age <= 18 }}
     runs-on: ubuntu-slim
     steps:
       - name: Evaluating teenage age
