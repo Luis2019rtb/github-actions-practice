@@ -26,7 +26,7 @@ jobs:
         run: |
           echo "Number: $OUTPUT1 Number2: $OUTPUT2 "
   handle-first-job-outputs:
-    name: Testing
+    name: Showing output practice from first job
     runs-on: ubuntu-slim
     needs: [handle-job-outputs]
     steps:
