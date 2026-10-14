@@ -1,0 +1,19 @@
+name: Practicing outputs
+run-name: outputs-practice
+on:
+  push:
+    branches: [main]
+jobs:
+  handle-job-outputs:
+    name: Output practice job
+    runs-on: ubuntu-latest
+    outputs:
+      firstoutput: ${{ steps.step1.outputs.test }}
+      secondoutput: ${{ steps.step2.outputs.test }}
+    steps:
+      - name: Generating first output step
+        id: step1
+        run: echo "test=hello" >> "$GITHUB_OUTPUT"
+      - name: Generating second output step
+        id: step2
+        run: echo "test=world" >> "$GITHUB_OUTPUT"
