@@ -14,11 +14,14 @@ jobs:
       - name: Generating first output step
         id: step1
         run: echo "test=hello" >> "$GITHUB_OUTPUT"
+
       - name: Generating second output step
         id: step2
         run: echo "test=world" >> "$GITHUB_OUTPUT"
+
       - name: showing outputs
         env:
           OUTPUT1: ${{ steps.step1.outputs.firstoutput }}
           OUTPUT2: ${{ steps.step2.outputs.secondoutput }}
-        run: echo "Number: $OUTPUT1 Number2: $OUTPUT2 "
+        run: |
+          echo "Number: $OUTPUT1 Number2: $OUTPUT2 "
