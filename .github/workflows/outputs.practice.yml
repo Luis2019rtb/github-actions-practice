@@ -6,7 +6,7 @@ on:
 jobs:
   handle-job-outputs:
     name: Output practice job
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     outputs:
       firstoutput: ${{ steps.step1.outputs.test }}
       secondoutput: ${{ steps.step2.outputs.test }}
@@ -25,3 +25,12 @@ jobs:
           OUTPUT2: ${{ steps.step2.outputs.test }}
         run: |
           echo "Number: $OUTPUT1 Number2: $OUTPUT2 "
+  handling-job-output:
+    name: Testing
+    runs-on: ubuntu-slim
+    steps:
+      - name: Showing first jobs outputs
+        env:
+          FIRST_JOB_OUTPUT: ${{ handle-job-outputs.firstoutput }}
+          SECOND_JOB_OUTPUT: ${{ handle-job-outputs.secondoutput }}
+        run: echo "$FIRST_JOB_OUTPUT $SECOND_JOB_OUTPUT"
