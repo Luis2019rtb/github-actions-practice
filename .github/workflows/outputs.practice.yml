@@ -19,6 +19,6 @@ jobs:
         run: echo "test=world" >> "$GITHUB_OUTPUT"
       - name: showing outputs
         env:
-          OUTPUT1: ${{ handle-job-outputs.outputs.firstoutput }}
-          OUTPUT2: ${{ handle-job-outputs.outputs.secondoutput }}
-        run: echo "Number:$OUTPUT1 Number2:OUTPUT2 "
+          OUTPUT1: ${{ steps.step1.outputs.firstoutput }}
+          OUTPUT2: ${{ steps.step2.outputs.secondoutput }}
+        run: echo "Number: $OUTPUT1 Number2: $OUTPUT2 "
