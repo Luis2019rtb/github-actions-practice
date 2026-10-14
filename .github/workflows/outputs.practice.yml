@@ -25,12 +25,13 @@ jobs:
           OUTPUT2: ${{ steps.step2.outputs.test }}
         run: |
           echo "Number: $OUTPUT1 Number2: $OUTPUT2 "
-  handling-job-output:
+  handle-first-job-outputs:
     name: Testing
     runs-on: ubuntu-slim
+    needs: [handle-job-outputs]
     steps:
       - name: Showing first jobs outputs
         env:
-          FIRST_JOB_OUTPUT: ${{ handle-job-outputs.firstoutput }}
-          SECOND_JOB_OUTPUT: ${{ handle-job-outputs.secondoutput }}
+          FIRST_JOB_OUTPUT: ${{ handle-job-outputs.outputs.firstoutput }}
+          SECOND_JOB_OUTPUT: ${{ handle-job-outputs.outputs.secondoutput }}
         run: echo "$FIRST_JOB_OUTPUT $SECOND_JOB_OUTPUT"
