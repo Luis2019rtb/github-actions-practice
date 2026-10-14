@@ -21,7 +21,7 @@ jobs:
 
       - name: showing outputs
         env:
-          OUTPUT1: ${{ steps.step1.outputs.firstoutput }}
-          OUTPUT2: ${{ steps.step2.outputs.secondoutput }}
+          OUTPUT1: ${{ steps.step1.outputs.test }}
+          OUTPUT2: ${{ steps.step2.outputs.test }}
         run: |
           echo "Number: $OUTPUT1 Number2: $OUTPUT2 "
