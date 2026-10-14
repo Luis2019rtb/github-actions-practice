@@ -32,6 +32,6 @@ jobs:
     steps:
       - name: Showing first jobs outputs
         env:
-          FIRST_JOB_OUTPUT: ${{ handle-job-outputs.outputs.firstoutput }}
-          SECOND_JOB_OUTPUT: ${{ handle-job-outputs.outputs.secondoutput }}
+          FIRST_JOB_OUTPUT: ${{ needs.handle-job-outputs.outputs.firstoutput }}
+          SECOND_JOB_OUTPUT: ${{ needs.handle-job-outputs.outputs.secondoutput }}
         run: echo "$FIRST_JOB_OUTPUT $SECOND_JOB_OUTPUT"
